@@ -85,7 +85,8 @@ namespace MathForGames1013
 
         public virtual void OnCollision(Actor actor) 
         {
-
+            if (actor.Icon.Symbol == 'x')
+                Engine.CloseApplication();
         }
 
     }
