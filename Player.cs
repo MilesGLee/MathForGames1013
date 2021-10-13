@@ -24,7 +24,7 @@ namespace MathForGames1013
         }
 
         public Player(char icon, float x, float y, float speed, string name = "Actor", ConsoleColor color = ConsoleColor.Cyan, ConsoleColor bgc = ConsoleColor.Black)
-            : base(icon, x, y, name, color, bgc)
+            : base(icon, x, y, false, name, color, bgc)
         {
             _speed = speed;
 
@@ -85,7 +85,8 @@ namespace MathForGames1013
         public override void OnCollision(Actor actor)
         {
             //Engine.CloseApplication();
-            _child = actor;
+            if(actor.CanGrab == true)
+                _child = actor;
         }
     }
 }

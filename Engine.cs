@@ -34,17 +34,13 @@ namespace MathForGames1013
         private void Start() 
         {
             Scene scene = new Scene();
-            //Actor actor = new Actor('P', new MathLibrary.Vector2 { X = 0, Y = 0}, "Actor1", ConsoleColor.Magenta, ConsoleColor.Black);
-            //Actor actor2 = new Actor('E', new MathLibrary.Vector2 { X = 1, Y = 1}, "Actor2", ConsoleColor.Green, ConsoleColor.Black);
-            //Actor actor3 = new Actor('I', new MathLibrary.Vector2 { X = 2, Y = 2}, "Actor3", ConsoleColor.Blue, ConsoleColor.Black);
-            Actor child = new Actor('■', new MathLibrary.Vector2 { X = 4, Y = 4}, "child", ConsoleColor.DarkGray, ConsoleColor.Black);
+            Actor button = new Actor('x', new MathLibrary.Vector2 { X = 0, Y = 0}, false, "button", ConsoleColor.Green, ConsoleColor.Black);
+            Actor cube = new Actor('■', new MathLibrary.Vector2 { X = 4, Y = 4}, true, "cube", ConsoleColor.DarkGray, ConsoleColor.Black);
             Player player = new Player('☻', 5, 5, 1, "Player", ConsoleColor.White);
 
             //adds the actor to the scene and takes in that actor
-            //scene.AddActor(actor);
-            //scene.AddActor(actor2);
-            //scene.AddActor(actor3);
-            scene.AddActor(child);
+            scene.AddActor(button);
+            scene.AddActor(cube);
             scene.AddActor(player);
 
             //player.Child = child;
