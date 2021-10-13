@@ -66,6 +66,11 @@ namespace MathForGames1013
                 if (_child != null)
                     _child.Postion = Postion;
             }
+            if (keyPessed == ConsoleKey.Spacebar) 
+            {
+                if (_child != null)
+                    _child = null;
+            }
 
             Velocity = moveDirection * Speed;
 
@@ -80,6 +85,7 @@ namespace MathForGames1013
         public override void OnCollision(Actor actor)
         {
             //Engine.CloseApplication();
+            _child = actor;
         }
     }
 }
