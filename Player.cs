@@ -9,6 +9,7 @@ namespace MathForGames1013
     {
         private float _speed;
         private Vector2 _velocity;
+        private Actor _child;
 
         public float Speed
         {
@@ -22,11 +23,17 @@ namespace MathForGames1013
             set { _velocity = value; }
         }
 
-        public Player(char icon, float x, float y, float speed, string name = "Actor", ConsoleColor color = ConsoleColor.Cyan)
-            : base(icon, x, y, name, color)
+        public Player(char icon, float x, float y, float speed, string name = "Actor", ConsoleColor color = ConsoleColor.Cyan, ConsoleColor bgc = ConsoleColor.Black)
+            : base(icon, x, y, name, color, bgc)
         {
             _speed = speed;
 
+        }
+
+        public Actor Child
+        {
+            get { return _child; }
+            set { _child = value; }
         }
 
         public override void Update()
@@ -36,23 +43,43 @@ namespace MathForGames1013
             ConsoleKey keyPessed = Engine.GetNewtKey();
 
             if (keyPessed == ConsoleKey.A)
+            {
                 moveDirection = new Vector2 { X = -1 };
+                if (_child != null)
+                    _child.Postion = Postion;
+            }
             if (keyPessed == ConsoleKey.D)
+            {
                 moveDirection = new Vector2 { X = 1 };
+                if (_child != null)
+                    _child.Postion = Postion;
+            }
             if (keyPessed == ConsoleKey.W)
+            {
                 moveDirection = new Vector2 { Y = -1 };
+                if (_child != null)
+                    _child.Postion = Postion;
+            }
             if (keyPessed == ConsoleKey.S)
+            {
                 moveDirection = new Vector2 { Y = 1 };
+                if (_child != null)
+                    _child.Postion = Postion;
+            }
 
             Velocity = moveDirection * Speed;
 
             Postion += Velocity;
+        }
 
+        public override void Draw()
+        {
+            Engine.Render(Icon, Postion);
         }
 
         public override void OnCollision(Actor actor)
         {
-            Engine.CloseApplication();
+            //Engine.CloseApplication();
         }
     }
 }

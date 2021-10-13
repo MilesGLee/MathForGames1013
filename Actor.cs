@@ -10,6 +10,7 @@ namespace MathForGames1013
     {
         public char Symbol;
         public ConsoleColor color;
+        public ConsoleColor bgColor;
     }
     class Actor
     {
@@ -32,20 +33,25 @@ namespace MathForGames1013
             set { _position = value; }
         }
 
+        public Icon Icon 
+        {
+            get { return _icon; }
+        }
+
         
         // takes the Actor constructor and add the float x and y but takes out y
         
-        public Actor(char icon, float x, float y, string name = "Actor", ConsoleColor color = ConsoleColor.Cyan) :
-            this(icon, new Vector2 { X = x, Y = y }, name, color)
+        public Actor(char icon, float x, float y, string name = "Actor", ConsoleColor color = ConsoleColor.Cyan, ConsoleColor bgc = ConsoleColor.Black) :
+            this(icon, new Vector2 { X = x, Y = y }, name, color, bgc)
         { }
 
 
         
         // Is a constructor for the actor that hold is definition.
-        public Actor(char icon, Vector2 position, string name = "Actor", ConsoleColor color = ConsoleColor.Cyan)
+        public Actor(char icon, Vector2 position, string name = "Actor", ConsoleColor color = ConsoleColor.Cyan, ConsoleColor bgc = ConsoleColor.Black)
         {
             //updatede the Icon with the struct and made it take a symbol and a color
-            _icon = new Icon { Symbol = icon, color = color };
+            _icon = new Icon { Symbol = icon, color = color, bgColor = bgc};
             _position = position;
             _name = name;
         }
