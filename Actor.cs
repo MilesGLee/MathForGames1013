@@ -28,7 +28,7 @@ namespace MathForGames1013
         }
 
 
-        public Vector2 Postion
+        public Vector2 Position
         {
             get { return _position; }
             set { _position = value; }

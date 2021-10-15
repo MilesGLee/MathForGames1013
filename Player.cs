@@ -46,25 +46,25 @@ namespace MathForGames1013
             {
                 moveDirection = new Vector2 { X = -1 };
                 if (_child != null)
-                    _child.Postion = Postion;
+                    _child.Position = Position;
             }
             if (keyPessed == ConsoleKey.D)
             {
                 moveDirection = new Vector2 { X = 1 };
                 if (_child != null)
-                    _child.Postion = Postion;
+                    _child.Position = Position;
             }
             if (keyPessed == ConsoleKey.W)
             {
                 moveDirection = new Vector2 { Y = -1 };
                 if (_child != null)
-                    _child.Postion = Postion;
+                    _child.Position = Position;
             }
             if (keyPessed == ConsoleKey.S)
             {
                 moveDirection = new Vector2 { Y = 1 };
                 if (_child != null)
-                    _child.Postion = Postion;
+                    _child.Position = Position;
             }
             if (keyPessed == ConsoleKey.Spacebar) 
             {
@@ -74,12 +74,12 @@ namespace MathForGames1013
 
             Velocity = moveDirection * Speed;
 
-            Postion += Velocity;
+            Position += Velocity;
         }
 
         public override void Draw()
         {
-            Engine.Render(Icon, Postion);
+            Engine.Render(Icon, Position);
         }
 
         public override void OnCollision(Actor actor)

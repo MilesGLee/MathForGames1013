@@ -38,12 +38,13 @@ namespace MathForGames1013
             Actor cube = new Actor('■', new MathLibrary.Vector2 { X = 4, Y = 4}, true, "cube", ConsoleColor.DarkGray, ConsoleColor.Black);
             Player player = new Player('☻', 5, 5, 1, "Player", ConsoleColor.White);
             Actor wall1 = new Actor(' ', new MathLibrary.Vector2 { X = 0, Y = 0}, false, "wall", ConsoleColor.Black, ConsoleColor.Gray);
-
+            UIText text = new UIText(30, 3, "Health", ConsoleColor.Blue, 50, 10, "This si a test");
             //adds the actor to the scene and takes in that actor
             scene.AddActor(button);
             scene.AddActor(cube);
             scene.AddActor(player);
             scene.AddActor(wall1);
+            scene.AddActor(text);
 
             //player.Child = child;
 

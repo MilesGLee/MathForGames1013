@@ -8,11 +8,13 @@ namespace MathForGames1013
     {
         // Array made for the actors in the scene
         private Actor[] _actors;
+        private Actor[] _UIElements;
 
         /// Makes actor in a Scene
         public Scene()
         {
             _actors = new Actor[0];
+            _UIElements = new Actor[0];
         }
 
         // calls start for all of the actors in the actors array
@@ -38,7 +40,7 @@ namespace MathForGames1013
 
                 for (int j = 0; j < _actors.Length; j++) 
                 {
-                    if (_actors[i].Postion == _actors[j].Postion && j != i)
+                    if (_actors[i].Position == _actors[j].Position && j != i)
                     {
                         _actors[i].OnCollision(_actors[j]);
                     }
@@ -53,6 +55,14 @@ namespace MathForGames1013
         {
             for (int i = 0; i < _actors.Length; i++)
                 _actors[i].Draw();
+        }
+
+        public virtual void DrawUI() 
+        {
+            for (int i = 0; i < _UIElements.Length; i++) 
+            {
+                _UIElements[i].Draw();
+            }
         }
 
         
@@ -84,7 +94,25 @@ namespace MathForGames1013
 
         }
 
-        
+        public void AddUIElement(Actor UI)
+        {
+            //makes a new array called temArray and mades it the lengh of actors + a nother spot
+            Actor[] temArray = new Actor[_UIElements.Length + 1];
+
+            //incremens through the actors array
+            for (int i = 0; i < _UIElements.Length; i++)
+            {
+                temArray[i] = _UIElements[i];
+            }
+
+            //sets temArray to the actors array and set it to actor
+            temArray[_UIElements.Length] = UI;
+
+            //then sets actors to temarray
+            _UIElements = temArray;
+
+        }
+
         // makes a new array then subtracts a existing actor form that array
         public virtual bool RemoveActor(Actor actor)
         {
