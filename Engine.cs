@@ -12,6 +12,7 @@ namespace MathForGames1013
         private static int _currentSceneIndex;
         private Scene[] _scenes = new Scene[0];
         private static Icon[,] _buffer;
+        private Scene scene;
 
         //Called to begin the application
         public void Run() 
@@ -33,17 +34,19 @@ namespace MathForGames1013
         //Called when the application starts
         private void Start() 
         {
-            Scene scene = new Scene();
-            Actor button = new Actor('x', new MathLibrary.Vector2 { X = 17, Y = 5}, false, "button", ConsoleColor.Green, ConsoleColor.Black);
+            scene = new Scene();
+            Actor button = new Actor('x', new MathLibrary.Vector2 { X = 14, Y = 5}, false, "button", ConsoleColor.Green, ConsoleColor.Black);
             Actor cube = new Actor('■', new MathLibrary.Vector2 { X = 4, Y = 4}, true, "cube", ConsoleColor.DarkGray, ConsoleColor.Black);
             Player player = new Player('☻', 5, 5, 1, "Player", ConsoleColor.White);
-            Actor wall1 = new Actor(' ', new MathLibrary.Vector2 { X = 0, Y = 0}, false, "wall", ConsoleColor.Black, ConsoleColor.Gray);
-            UIText text = new UIText(30, 3, "Health", ConsoleColor.Blue, 50, 10, "This si a test");
+            CreateBoundries("0", "0", "1", "0", "2", "0", "3", "0", "4", "0", "5", "0", "6", "0", "7", "0", "8", "0", "9", "0", "10", "0", "11", "0", "12", "0", "13", "0", "14", "0", "15", "0");
+            CreateBoundries("0", "10", "1", "10", "2", "10", "3", "10", "4", "10", "5", "10", "6", "10", "7", "10", "8", "10", "9", "10", "10", "10", "11", "10", "12", "10", "13", "10", "14", "10", "15", "10");
+            CreateBoundries("0", "1", "0", "2", "0", "3", "0", "4", "0", "5", "0", "6", "0", "7", "0", "8", "0", "9", "0", "10");
+            CreateBoundries("15", "1", "15", "2", "15", "3", "15", "4", "15", "5", "15", "6", "15", "7", "15", "8", "15", "9", "15", "10");
+            UIText text = new UIText(30, 3, "Health", ConsoleColor.Blue, 50, 10, "Bring that box to the X, dummy...");
             //adds the actor to the scene and takes in that actor
             scene.AddActor(button);
             scene.AddActor(cube);
             scene.AddActor(player);
-            scene.AddActor(wall1);
             scene.AddActor(text);
 
             //player.Child = child;
@@ -98,6 +101,20 @@ namespace MathForGames1013
 
                 //skip a line once the end of the row has been reached.
                 Console.WriteLine();
+            }
+        }
+
+        private void CreateBoundries(params string[] positions)
+        {
+            for (int i = 0; i < positions.Length; i++) 
+            {
+                int x = int.Parse(positions[i]);
+                int y = int.Parse(positions[i]);
+                if (i + 1 < positions.Length)
+                    y = int.Parse(positions[i + 1]);
+                Actor wall = new Actor('W', new MathLibrary.Vector2 { X = x, Y = y }, false, "wall", ConsoleColor.Gray, ConsoleColor.Gray);
+                scene.AddActor(wall);
+                i++;
             }
         }
 

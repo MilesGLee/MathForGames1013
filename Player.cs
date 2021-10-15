@@ -87,6 +87,10 @@ namespace MathForGames1013
             //Engine.CloseApplication();
             if(actor.CanGrab == true)
                 _child = actor;
+            if (actor.Icon.Symbol == 'W')
+            {
+                Position = new Vector2 { X = 5, Y = 5 };
+            }
         }
     }
 }
